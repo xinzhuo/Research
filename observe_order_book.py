@@ -302,7 +302,7 @@ def visualize_ob_history_2(contract_id, contract_month, start_time, end_time, so
     min_tick = contract_info.step
     vol_side = 2 if hrb.tInfo.fSymbol not in ["IF", "IC", "IH"] else 1
     df = hrb.get_hft_data()
-    print(df)
+    #print(df)
     df["volume"] = df["TotalVolume"].diff()/vol_side
     df["turnover"] = df["Turnover"].diff()/vol_side/multiplier
     df["hCount"] = hrb.get_hCount()
@@ -444,7 +444,6 @@ def visualize_ob_history_arb_sub(fig, df, ts, plot_tick, min_tick, vol_side, con
     cy = None
     n_tick = plot_tick
 
-    vwap_list = []
     transaction_record = []
     last_row = None
 
@@ -602,7 +601,7 @@ if __name__ == '__main__':
     #print(df["Open_Long"])
     starttime = datetime(2019, 8, 23, 21, 0, 0)
     endtime = datetime(2019, 8, 26, 15, 0, 0)
-    #visualize_ob_history_2("ni", "1911", starttime, endtime, "xele_l2", True, df["Open_Long"], df["Close_Short"], df["Time"])
-    visualize_ob_history_arb("ni", "ni", "1911", "1910", starttime, endtime, "xele_l2", True)
+    visualize_ob_history_2("ni", "1911", starttime, endtime, "xele_l2", True, df["Open_Long"], df["Close_Short"], df["Time"])
+    #visualize_ob_history_arb("ni", "ni", "1911", "1910", starttime, endtime, "xele_l2", True)
     #visualize_ob_history("jm"H "1909", starttime, endtime, "l2_dce")
     #visualize_order_book("eg", "1909", starttime, endtime, "l2_dce")
